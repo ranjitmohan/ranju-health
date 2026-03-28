@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranju Health</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#07090f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<style>
+body { background:#07090f; color:#fff; font-family:Arial; text-align:center; padding:50px;}
+button { padding:15px; font-size:16px; margin-top:20px;}
+</style>
+</head>
+
+<body>
+<h1>Ranju Health</h1>
+<p>Your PWA is working ✅</p>
+
+<button onclick="pasteSync()">🍎 Sync</button>
+
+<script>
+async function pasteSync(){
+  try{
+    const txt = await navigator.clipboard.readText();
+    alert("Clipboard Data:\n" + txt);
+  }catch(e){
+    alert("Clipboard access failed");
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>
